@@ -5,7 +5,7 @@ enum IpAddrKind {
 
 enum Message {
     Quit,
-    Message {x:u32, y:u32},
+    Message { x: u32, y: u32 },
     Write(String),
     ChangeColor(i32, i32, i32),
 }
@@ -24,12 +24,11 @@ enum Coin {
     Dime,
     Quarter(UsState),
 }
-impl Message{
+impl Message {
     fn some_message() {
         println!("Hello world!");
     }
 }
-
 
 fn main() {
     println!("Hello, world!");
@@ -39,7 +38,7 @@ fn main() {
     let b = Some("hello world");
     let c: Option<i32> = None;
     let x: i8 = 5;
-    let y: Option<i8> = Some(5);  // or None
+    let y: Option<i8> = Some(5); // or None
     let sum = x + y.unwrap_or(0);
     println!("sum = {}", sum);
     let five = Some(5);
@@ -51,27 +50,27 @@ fn main() {
         _ => (),
     }
 
-    if let Some(5) = five{
+    if let Some(5) = five {
         println!("five = 5");
     }
 
     value_in_cent(Coin::Quarter(UsState::Aleska));
 }
-fn plus_one (x: Option<i32>) -> Option<i32> {
+fn plus_one(x: Option<i32>) -> Option<i32> {
     match x {
         Some(x) => Some(x + 1),
-        _ => None
+        _ => None,
     }
 }
 
-fn  value_in_cent(coin: Coin) -> u8 {
+fn value_in_cent(coin: Coin) -> u8 {
     match coin {
         Coin::Penny => 1,
         Coin::Nickel => 5,
         Coin::Dime => 10,
-        Coin::Quarter(state)=> {
+        Coin::Quarter(state) => {
             println!("State quarter form {:?}", state);
             25
-        },
+        }
     }
 }
